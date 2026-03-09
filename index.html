@@ -13,9 +13,10 @@
             --bg-color: #0d0d0f;
             --surface-color: #1a1a1f;
             --text-main: #f4f4f5;
-            --text-muted: #a1a1aa;
-            --accent-color: #d4af37; /* Elegant Gold */
-            --accent-purple: #9d4edd; /* Women's day purple */
+            --text-muted: #d4d4d8; /* Lightened slightly for better readability of long text */
+            --accent-color: #d4af37; 
+            --accent-purple: #9d4edd; 
+            --whatsapp-green: #25D366;
         }
 
         body, html {
@@ -26,6 +27,7 @@
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         h1, h2, h3 {
@@ -41,8 +43,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            /* Professional elegant background image */
-            background: linear-gradient(rgba(13, 13, 15, 0.7), rgba(13, 13, 15, 0.9)), 
+            background: linear-gradient(rgba(13, 13, 15, 0.75), rgba(13, 13, 15, 0.95)), 
                         url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
         }
 
@@ -55,19 +56,12 @@
             font-size: 4rem;
             color: var(--accent-color);
             margin-bottom: 20px;
-            min-height: 80px; /* Prevents layout shift while typing */
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            min-height: 90px; 
         }
 
         .cursor {
             display: inline-block;
-            width: 3px;
+            width: 4px;
             background-color: var(--accent-color);
             margin-left: 5px;
             animation: blink 0.8s infinite;
@@ -78,7 +72,7 @@
             50% { opacity: 0; }
         }
 
-        /* --- Wish Section --- */
+        /* --- Main Wish Section --- */
         .wish-section {
             padding: 80px 20px;
             text-align: center;
@@ -102,15 +96,24 @@
         }
 
         .wish-container p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             line-height: 1.8;
             color: var(--text-muted);
+        }
+
+        .highlight-wish {
+            display: block;
+            margin-top: 25px;
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
         }
 
         /* --- 4 Image Grid Section --- */
         .gallery-section {
             padding: 80px 20px;
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
@@ -124,103 +127,111 @@
         .grid-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 30px;
         }
 
         .grid-item {
             position: relative;
             border-radius: 12px;
             overflow: hidden;
-            cursor: pointer;
             box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            height: 400px; /* Fixed height to accommodate longer text */
         }
 
         .grid-item img {
             width: 100%;
-            height: 350px;
+            height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 0.5s ease;
+            transition: transform 0.8s ease;
         }
 
         .grid-item:hover img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
-        /* Content at the bottom of the image */
+        /* Overlay tailored for longer text readability */
         .img-content {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
-            padding: 40px 20px 20px;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0.1) 100%);
+            padding: 30px;
             box-sizing: border-box;
-            transition: padding-bottom 0.3s ease;
-        }
-
-        .grid-item:hover .img-content {
-            padding-bottom: 30px;
-        }
-
-        .img-content h3 {
-            color: var(--text-main);
-            font-size: 1.5rem;
-            margin-bottom: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
         }
 
         .img-content p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            color: var(--text-main);
+            font-size: 1rem;
+            line-height: 1.6;
             margin: 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
         }
 
-        /* --- Inspiration Section (Extra) --- */
-        .inspire-section {
+        /* --- WhatsApp Send Message Section --- */
+        .whatsapp-section {
             padding: 80px 20px;
             text-align: center;
-            background-color: var(--surface-color);
+            background-color: var(--bg-color);
         }
 
-        .inspire-section h2 {
-            font-size: 2.2rem;
-            color: var(--accent-purple);
-            margin-bottom: 30px;
-        }
-
-        .traits {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .trait-box {
-            background: var(--bg-color);
-            padding: 30px;
-            border-radius: 10px;
-            width: 200px;
+        .whatsapp-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #151515;
+            padding: 40px;
+            border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .trait-box h3 {
-            color: var(--accent-color);
-            margin-bottom: 10px;
+        .whatsapp-container h2 {
+            font-size: 2.2rem;
+            color: var(--text-main);
+            margin-bottom: 15px;
         }
 
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            padding: 30px;
-            background-color: #050505;
-            color: #555;
-            font-size: 0.9rem;
+        .whatsapp-container p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .wa-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: var(--whatsapp-green);
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .wa-btn:hover {
+            background-color: #1ebe57;
+            transform: translateY(-3px);
+        }
+
+        .wa-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 2.2rem; min-height: 60px; }
             .grid-container { grid-template-columns: 1fr; }
+            .grid-item { height: auto; min-height: 350px; }
             .wish-container { padding: 30px 20px; }
         }
     </style>
@@ -230,109 +241,109 @@
     <header class="hero">
         <div class="hero-content">
             <h1><span id="typewriter"></span><span class="cursor">&nbsp;</span></h1>
-            <p>Celebrating Your Strength & Grace</p>
         </div>
     </header>
 
     <section class="wish-section">
         <div class="wish-container">
-            <h2>A Special Wish For You</h2>
+            <h2>A Special Wish</h2>
             <p>
-                Dear Mansi, today is a day to celebrate the incredible woman you are. 
-                Your resilience, compassion, and unwavering spirit inspire everyone around you. 
-                May you continue to break boundaries, achieve your dreams, and illuminate the world 
-                with your presence. Never forget how truly amazing you are.
+                To an incredible colleague and an even better friend. Thank you for bringing so much light, energy, and joy into the office every single day.
             </p>
+            <span class="highlight-wish">Keep shining like a star⭐️ once again happy women’s day Mansi</span>
         </div>
     </section>
 
     <section class="gallery-section">
-        <h2>Feminine Energy & Power</h2>
+        <h2>Moments & Memories</h2>
         <div class="grid-container">
             
             <div class="grid-item">
-                <img src="https://images.unsplash.com/photo-1504199367641-aba29b512faa?q=80&w=1000&auto=format&fit=crop" alt="Strength">
+                <img src="https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?q=80&w=1000&auto=format&fit=crop" alt="Friendly Nature">
                 <div class="img-content">
-                    <h3>Unstoppable</h3>
-                    <p>Overcoming every obstacle.</p>
+                    <p>When you first came to the office, you were a stranger to everyone, but as is your nature, you assimilated everyone in a very short time, no one thought that you would be so friendly and talkative.</p>
                 </div>
             </div>
 
             <div class="grid-item">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop" alt="Grace">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop" alt="Food and Sharing">
                 <div class="img-content">
-                    <h3>Graceful</h3>
-                    <p>Walking with elegance and purpose.</p>
+                    <p>Whenever you come to the office, you never come alone, you bring something to eat with you and that too for everyone.</p>
                 </div>
             </div>
 
             <div class="grid-item">
-                <img src="https://images.unsplash.com/photo-1516528387618-afa90b13e000?q=80&w=1000&auto=format&fit=crop" alt="Ambition">
+                <img src="https://images.unsplash.com/photo-1516528387618-afa90b13e000?q=80&w=1000&auto=format&fit=crop" alt="Laughter">
                 <div class="img-content">
-                    <h3>Ambitious</h3>
-                    <p>Dreaming big and achieving more.</p>
+                    <p>Since you are in the team, the atmosphere of the team is full of laughter. You make everyone laugh by saying something in a serious place, this quality is really worth absorbing.</p>
                 </div>
             </div>
 
             <div class="grid-item">
-                <img src="https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?q=80&w=1000&auto=format&fit=crop" alt="Kindness">
+                <img src="https://images.unsplash.com/photo-1504199367641-aba29b512faa?q=80&w=1000&auto=format&fit=crop" alt="Responsibility">
                 <div class="img-content">
-                    <h3>Empathetic</h3>
-                    <p>Healing the world with kindness.</p>
+                    <p>Keep smiling like this, just like you are, knowing your responsibility and taking care of the house, it is our luck to meet this friend who lives peacefully in the office.</p>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <section class="inspire-section">
-        <h2>Why You Inspire Us, Mansi</h2>
-        <div class="traits">
-            <div class="trait-box">
-                <h3>Courage</h3>
-                <p>For facing challenges head-on.</p>
-            </div>
-            <div class="trait-box">
-                <h3>Wisdom</h3>
-                <p>For always knowing the right path.</p>
-            </div>
-            <div class="trait-box">
-                <h3>Love</h3>
-                <p>For caring unconditionally.</p>
-            </div>
+    <section class="whatsapp-section">
+        <div class="whatsapp-container">
+            <h2>Send a Special Wish</h2>
+            <p>Click below to open WhatsApp and send a pre-written message that lets Mansi know just how incredibly special she is.</p>
+            
+            <a href="https://wa.me/918600867819?text=Mansi%2C%20you%20are%20incredibly%20special%20to%20me.%20Your%20energy%2C%20your%20kindness%2C%20and%20your%20smile%20make%20every%20single%20day%20brighter.%20Keep%20shining%20like%20a%20star!%20%E2%AD%90%EF%B8%8F%20Happy%20Women's%20Day!%20%F0%9F%92%96" 
+               target="_blank" 
+               class="wa-btn">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.126.55 4.19 1.595 6.01L.023 23.977l6.096-1.598c1.768.966 3.75 1.474 5.912 1.474 6.646 0 12.031-5.385 12.031-12.031S18.677 0 12.031 0zm0 21.968c-1.802 0-3.568-.484-5.118-1.405l-.367-.218-3.804.997 1.018-3.707-.238-.38c-1.01-1.608-1.543-3.468-1.543-5.216 0-5.592 4.549-10.141 10.141-10.141s10.141 4.55 10.141 10.141-4.549 10.141-10.141 10.141zm5.558-7.585c-.305-.152-1.804-.891-2.083-.993-.279-.101-.482-.152-.686.152-.203.305-.788.993-.966 1.196-.178.203-.356.228-.66.076-.305-.152-1.288-.475-2.454-1.517-.908-.81-1.522-1.81-1.7-2.115-.178-.305-.019-.469.133-.621.137-.137.305-.356.457-.534.152-.178.203-.305.305-.508.101-.203.051-.381-.025-.534-.076-.152-.686-1.652-.94-2.261-.247-.594-.497-.514-.686-.524-.178-.01-.381-.01-.584-.01-.203 0-.534.076-.813.381-.279.305-1.067 1.042-1.067 2.541s1.093 2.948 1.246 3.15c.152.203 2.149 3.282 5.207 4.601 1.956.842 2.704.893 3.619.761.644-.093 1.804-.737 2.058-1.448.254-.711.254-1.32.178-1.448-.076-.127-.279-.203-.584-.356z"/>
+                </svg>
+                Make a Wish via WhatsApp
+            </a>
         </div>
     </section>
 
-    <footer>
+    <footer style="text-align: center; padding: 30px; background-color: #050505; color: #555; font-size: 0.9rem;">
         <p>Designed with respect and admiration for Mansi | Happy International Women's Day</p>
     </footer>
 
     <script>
-        // The text to type out
         const textToType = "Happy Women's Day, Mansi!";
         const typingElement = document.getElementById("typewriter");
         
-        let index = 0;
+        // The prompt asks to show the message in 4 seconds (4000ms)
+        const typingDuration = 4000; 
         
-        // Calculate speed to finish in exactly 1 second (1000ms)
-        // 1000ms divided by the length of the string
-        const speed = 1000 / textToType.length; 
+        // Calculate the speed per character to ensure it takes exactly 4 seconds to type out
+        const typingSpeed = typingDuration / textToType.length;
+        
+        // The prompt asks for an infinite loop with a gap of 2 seconds (2000ms)
+        const pauseTime = 2000; 
 
-        function typeWriter() {
-            if (index < textToType.length) {
-                typingElement.innerHTML += textToType.charAt(index);
-                index++;
-                setTimeout(typeWriter, speed);
-            } else {
-                // Optional: Remove blinking cursor when done, or leave it.
-                // document.querySelector('.cursor').style.display = 'none';
+        // An asynchronous function allows us to use 'await' for precise pausing and looping
+        async function runTypingLoop() {
+            while (true) {
+                // Clear text at the start of every loop
+                typingElement.innerHTML = "";
+                
+                // Type out each letter
+                for (let i = 0; i < textToType.length; i++) {
+                    typingElement.innerHTML += textToType.charAt(i);
+                    // Wait for the exact character speed before typing the next one
+                    await new Promise(resolve => setTimeout(resolve, typingSpeed));
+                }
+                
+                // Wait for 2 seconds after the full sentence is typed
+                await new Promise(resolve => setTimeout(resolve, pauseTime));
             }
         }
 
-        // Start typing effect when the window loads
+        // Start the infinite loop when the page loads
         window.onload = () => {
-            // Added a slight delay of 300ms before starting for better visual effect
-            setTimeout(typeWriter, 300); 
+            // Small initial delay of 300ms so it doesn't start before the screen fully renders
+            setTimeout(runTypingLoop, 300); 
         };
     </script>
 
