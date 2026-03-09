@@ -13,7 +13,7 @@
             --bg-color: #0d0d0f;
             --surface-color: #1a1a1f;
             --text-main: #f4f4f5;
-            --text-muted: #d4d4d8; /* Lightened slightly for better readability of long text */
+            --text-muted: #d4d4d8; 
             --accent-color: #d4af37; 
             --accent-purple: #9d4edd; 
             --whatsapp-green: #25D366;
@@ -33,6 +33,18 @@
         h1, h2, h3 {
             font-family: 'Playfair Display', serif;
             margin: 0;
+        }
+
+        /* --- Animations --- */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* --- Hero Banner Section --- */
@@ -87,6 +99,12 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             border-top: 3px solid var(--accent-purple);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .wish-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(157, 78, 221, 0.2);
         }
 
         .wish-container h2 {
@@ -112,7 +130,7 @@
 
         /* --- 4 Image Grid Section --- */
         .gallery-section {
-            padding: 80px 20px;
+            padding: 100px 20px;
             max-width: 1100px;
             margin: 0 auto;
         }
@@ -135,7 +153,7 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-            height: 400px; /* Fixed height to accommodate longer text */
+            height: 400px; 
         }
 
         .grid-item img {
@@ -150,7 +168,6 @@
             transform: scale(1.08);
         }
 
-        /* Overlay tailored for longer text readability */
         .img-content {
             position: absolute;
             bottom: 0;
@@ -163,6 +180,12 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .grid-item:hover .img-content {
+            opacity: 1;
         }
 
         .img-content p {
@@ -173,9 +196,9 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
         }
 
-        /* --- WhatsApp Send Message Section --- */
+        /* --- Interactive WhatsApp Section --- */
         .whatsapp-section {
-            padding: 80px 20px;
+            padding: 100px 20px;
             text-align: center;
             background-color: var(--bg-color);
         }
@@ -184,21 +207,72 @@
             max-width: 600px;
             margin: 0 auto;
             background: #151515;
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
+            padding: 50px 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(157, 78, 221, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Glow effect in the background of the form */
+        .whatsapp-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(157,78,221,0.05) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .whatsapp-container h2, 
+        .whatsapp-container p, 
+        .whatsapp-container textarea, 
+        .whatsapp-container button {
+            position: relative;
+            z-index: 1;
         }
 
         .whatsapp-container h2 {
             font-size: 2.2rem;
-            color: var(--text-main);
+            color: var(--accent-color);
             margin-bottom: 15px;
         }
 
         .whatsapp-container p {
             color: var(--text-muted);
-            margin-bottom: 30px;
-            line-height: 1.6;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        /* Custom Text Area */
+        .wish-textarea {
+            width: 100%;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            resize: none;
+            box-sizing: border-box;
+            margin-bottom: 25px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .wish-textarea:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 15px rgba(157, 78, 221, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .wish-textarea::placeholder {
+            color: #666;
         }
 
         .wa-btn {
@@ -208,17 +282,20 @@
             gap: 10px;
             background-color: var(--whatsapp-green);
             color: #fff;
-            padding: 15px 30px;
+            padding: 15px 35px;
             font-size: 1.1rem;
             font-weight: 600;
-            text-decoration: none;
+            border: none;
+            cursor: pointer;
             border-radius: 50px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            font-family: 'Inter', sans-serif;
         }
 
         .wa-btn:hover {
             background-color: #1ebe57;
             transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
         }
 
         .wa-btn svg {
@@ -232,7 +309,7 @@
             .hero h1 { font-size: 2.2rem; min-height: 60px; }
             .grid-container { grid-template-columns: 1fr; }
             .grid-item { height: auto; min-height: 350px; }
-            .wish-container { padding: 30px 20px; }
+            .wish-container, .whatsapp-container { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -244,7 +321,7 @@
         </div>
     </header>
 
-    <section class="wish-section">
+    <section class="wish-section fade-in-up">
         <div class="wish-container">
             <h2>A Special Wish</h2>
             <p>
@@ -255,31 +332,31 @@
     </section>
 
     <section class="gallery-section">
-        <h2>Moments & Memories</h2>
+        <h2 class="fade-in-up">Moments & Memories</h2>
         <div class="grid-container">
             
-            <div class="grid-item">
+            <div class="grid-item fade-in-up" style="transition-delay: 0.1s;">
                 <img src="https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?q=80&w=1000&auto=format&fit=crop" alt="Friendly Nature">
                 <div class="img-content">
                     <p>When you first came to the office, you were a stranger to everyone, but as is your nature, you assimilated everyone in a very short time, no one thought that you would be so friendly and talkative.</p>
                 </div>
             </div>
 
-            <div class="grid-item">
+            <div class="grid-item fade-in-up" style="transition-delay: 0.2s;">
                 <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop" alt="Food and Sharing">
                 <div class="img-content">
                     <p>Whenever you come to the office, you never come alone, you bring something to eat with you and that too for everyone.</p>
                 </div>
             </div>
 
-            <div class="grid-item">
+            <div class="grid-item fade-in-up" style="transition-delay: 0.3s;">
                 <img src="https://images.unsplash.com/photo-1516528387618-afa90b13e000?q=80&w=1000&auto=format&fit=crop" alt="Laughter">
                 <div class="img-content">
                     <p>Since you are in the team, the atmosphere of the team is full of laughter. You make everyone laugh by saying something in a serious place, this quality is really worth absorbing.</p>
                 </div>
             </div>
 
-            <div class="grid-item">
+            <div class="grid-item fade-in-up" style="transition-delay: 0.4s;">
                 <img src="https://images.unsplash.com/photo-1504199367641-aba29b512faa?q=80&w=1000&auto=format&fit=crop" alt="Responsibility">
                 <div class="img-content">
                     <p>Keep smiling like this, just like you are, knowing your responsibility and taking care of the house, it is our luck to meet this friend who lives peacefully in the office.</p>
@@ -289,19 +366,19 @@
         </div>
     </section>
 
-    <section class="whatsapp-section">
+    <section class="whatsapp-section fade-in-up">
         <div class="whatsapp-container">
-            <h2>Send a Special Wish</h2>
-            <p>Click below to open WhatsApp and send a pre-written message that lets Mansi know just how incredibly special she is.</p>
+            <h2>Make a Wish</h2>
+            <p>Write your feelings below to save this moment forever.</p>
             
-            <a href="https://wa.me/918600867819?text=Mansi%2C%20you%20are%20incredibly%20special%20to%20me.%20Your%20energy%2C%20your%20kindness%2C%20and%20your%20smile%20make%20every%20single%20day%20brighter.%20Keep%20shining%20like%20a%20star!%20%E2%AD%90%EF%B8%8F%20Happy%20Women's%20Day!%20%F0%9F%92%96" 
-               target="_blank" 
-               class="wa-btn">
+            <textarea id="customWishText" class="wish-textarea" placeholder="Type your beautiful message here..."></textarea>
+            
+            <button onclick="submitWish()" class="wa-btn">
                 <svg viewBox="0 0 24 24">
                     <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.126.55 4.19 1.595 6.01L.023 23.977l6.096-1.598c1.768.966 3.75 1.474 5.912 1.474 6.646 0 12.031-5.385 12.031-12.031S18.677 0 12.031 0zm0 21.968c-1.802 0-3.568-.484-5.118-1.405l-.367-.218-3.804.997 1.018-3.707-.238-.38c-1.01-1.608-1.543-3.468-1.543-5.216 0-5.592 4.549-10.141 10.141-10.141s10.141 4.55 10.141 10.141-4.549 10.141-10.141 10.141zm5.558-7.585c-.305-.152-1.804-.891-2.083-.993-.279-.101-.482-.152-.686.152-.203.305-.788.993-.966 1.196-.178.203-.356.228-.66.076-.305-.152-1.288-.475-2.454-1.517-.908-.81-1.522-1.81-1.7-2.115-.178-.305-.019-.469.133-.621.137-.137.305-.356.457-.534.152-.178.203-.305.305-.508.101-.203.051-.381-.025-.534-.076-.152-.686-1.652-.94-2.261-.247-.594-.497-.514-.686-.524-.178-.01-.381-.01-.584-.01-.203 0-.534.076-.813.381-.279.305-1.067 1.042-1.067 2.541s1.093 2.948 1.246 3.15c.152.203 2.149 3.282 5.207 4.601 1.956.842 2.704.893 3.619.761.644-.093 1.804-.737 2.058-1.448.254-.711.254-1.32.178-1.448-.076-.127-.279-.203-.584-.356z"/>
                 </svg>
-                Make a Wish via WhatsApp
-            </a>
+                Save a wish for lifetime
+            </button>
         </div>
     </section>
 
@@ -310,41 +387,66 @@
     </footer>
 
     <script>
+        // --- Auto-Typing Effect ---
         const textToType = "Happy Women's Day, Mansi!";
         const typingElement = document.getElementById("typewriter");
-        
-        // The prompt asks to show the message in 4 seconds (4000ms)
         const typingDuration = 4000; 
-        
-        // Calculate the speed per character to ensure it takes exactly 4 seconds to type out
         const typingSpeed = typingDuration / textToType.length;
-        
-        // The prompt asks for an infinite loop with a gap of 2 seconds (2000ms)
         const pauseTime = 2000; 
 
-        // An asynchronous function allows us to use 'await' for precise pausing and looping
         async function runTypingLoop() {
             while (true) {
-                // Clear text at the start of every loop
                 typingElement.innerHTML = "";
-                
-                // Type out each letter
                 for (let i = 0; i < textToType.length; i++) {
                     typingElement.innerHTML += textToType.charAt(i);
-                    // Wait for the exact character speed before typing the next one
                     await new Promise(resolve => setTimeout(resolve, typingSpeed));
                 }
-                
-                // Wait for 2 seconds after the full sentence is typed
                 await new Promise(resolve => setTimeout(resolve, pauseTime));
             }
         }
 
-        // Start the infinite loop when the page loads
-        window.onload = () => {
-            // Small initial delay of 300ms so it doesn't start before the screen fully renders
-            setTimeout(runTypingLoop, 300); 
-        };
+        // --- WhatsApp Logic ---
+        function submitWish() {
+            const textArea = document.getElementById("customWishText");
+            const message = textArea.value.trim();
+
+            if (message === "") {
+                alert("Please type a message first! ✨");
+                return;
+            }
+
+            // Encode message for URL and construct WhatsApp API link
+            const encodedMessage = encodeURIComponent(message);
+            const phoneNumber = "918600867819"; // Number provided with +91 country code format
+            const waUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+            // Open WhatsApp in a new tab
+            window.open(waUrl, '_blank');
+        }
+
+        // --- Scroll Animation Logic ---
+        // Uses Intersection Observer to add the 'visible' class when elements scroll into view
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(runTypingLoop, 300); // Start typing loop
+
+            const observerOptions = {
+                threshold: 0.1, // Triggers when 10% of the element is visible
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Stop observing once animated
+                    }
+                });
+            }, observerOptions);
+
+            // Select all elements with the fade-in-up class
+            const animatedElements = document.querySelectorAll('.fade-in-up');
+            animatedElements.forEach(el => observer.observe(el));
+        });
     </script>
 
 </body>
