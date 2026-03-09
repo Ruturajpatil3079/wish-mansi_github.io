@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Women's Day, Mansi</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Settings / Dark Theme */
+        :root {
+            --bg-color: #0d0d0f;
+            --surface-color: #1a1a1f;
+            --text-main: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --accent-color: #d4af37; /* Elegant Gold */
+            --accent-purple: #9d4edd; /* Women's day purple */
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+        }
+
+        /* --- Hero Banner Section --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* Professional elegant background image */
+            background: linear-gradient(rgba(13, 13, 15, 0.7), rgba(13, 13, 15, 0.9)), 
+                        url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+        }
+
+        .hero-content {
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            min-height: 80px; /* Prevents layout shift while typing */
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: var(--accent-color);
+            margin-left: 5px;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* --- Wish Section --- */
+        .wish-section {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: var(--surface-color);
+        }
+
+        .wish-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, #1e1e24, #151519);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-top: 3px solid var(--accent-purple);
+        }
+
+        .wish-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: var(--accent-purple);
+        }
+
+        .wish-container p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+        }
+
+        /* --- 4 Image Grid Section --- */
+        .gallery-section {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .gallery-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--accent-color);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .grid-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .grid-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Content at the bottom of the image */
+        .img-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+            padding: 40px 20px 20px;
+            box-sizing: border-box;
+            transition: padding-bottom 0.3s ease;
+        }
+
+        .grid-item:hover .img-content {
+            padding-bottom: 30px;
+        }
+
+        .img-content h3 {
+            color: var(--text-main);
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .img-content p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* --- Inspiration Section (Extra) --- */
+        .inspire-section {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: var(--surface-color);
+        }
+
+        .inspire-section h2 {
+            font-size: 2.2rem;
+            color: var(--accent-purple);
+            margin-bottom: 30px;
+        }
+
+        .traits {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .trait-box {
+            background: var(--bg-color);
+            padding: 30px;
+            border-radius: 10px;
+            width: 200px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .trait-box h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #050505;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .grid-container { grid-template-columns: 1fr; }
+            .wish-container { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1><span id="typewriter"></span><span class="cursor">&nbsp;</span></h1>
+            <p>Celebrating Your Strength & Grace</p>
+        </div>
+    </header>
+
+    <section class="wish-section">
+        <div class="wish-container">
+            <h2>A Special Wish For You</h2>
+            <p>
+                Dear Mansi, today is a day to celebrate the incredible woman you are. 
+                Your resilience, compassion, and unwavering spirit inspire everyone around you. 
+                May you continue to break boundaries, achieve your dreams, and illuminate the world 
+                with your presence. Never forget how truly amazing you are.
+            </p>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <h2>Feminine Energy & Power</h2>
+        <div class="grid-container">
+            
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1504199367641-aba29b512faa?q=80&w=1000&auto=format&fit=crop" alt="Strength">
+                <div class="img-content">
+                    <h3>Unstoppable</h3>
+                    <p>Overcoming every obstacle.</p>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop" alt="Grace">
+                <div class="img-content">
+                    <h3>Graceful</h3>
+                    <p>Walking with elegance and purpose.</p>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1516528387618-afa90b13e000?q=80&w=1000&auto=format&fit=crop" alt="Ambition">
+                <div class="img-content">
+                    <h3>Ambitious</h3>
+                    <p>Dreaming big and achieving more.</p>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?q=80&w=1000&auto=format&fit=crop" alt="Kindness">
+                <div class="img-content">
+                    <h3>Empathetic</h3>
+                    <p>Healing the world with kindness.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="inspire-section">
+        <h2>Why You Inspire Us, Mansi</h2>
+        <div class="traits">
+            <div class="trait-box">
+                <h3>Courage</h3>
+                <p>For facing challenges head-on.</p>
+            </div>
+            <div class="trait-box">
+                <h3>Wisdom</h3>
+                <p>For always knowing the right path.</p>
+            </div>
+            <div class="trait-box">
+                <h3>Love</h3>
+                <p>For caring unconditionally.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Designed with respect and admiration for Mansi | Happy International Women's Day</p>
+    </footer>
+
+    <script>
+        // The text to type out
+        const textToType = "Happy Women's Day, Mansi!";
+        const typingElement = document.getElementById("typewriter");
+        
+        let index = 0;
+        
+        // Calculate speed to finish in exactly 1 second (1000ms)
+        // 1000ms divided by the length of the string
+        const speed = 1000 / textToType.length; 
+
+        function typeWriter() {
+            if (index < textToType.length) {
+                typingElement.innerHTML += textToType.charAt(index);
+                index++;
+                setTimeout(typeWriter, speed);
+            } else {
+                // Optional: Remove blinking cursor when done, or leave it.
+                // document.querySelector('.cursor').style.display = 'none';
+            }
+        }
+
+        // Start typing effect when the window loads
+        window.onload = () => {
+            // Added a slight delay of 300ms before starting for better visual effect
+            setTimeout(typeWriter, 300); 
+        };
+    </script>
+
+</body>
+</html>
